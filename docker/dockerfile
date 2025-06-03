@@ -1,0 +1,15 @@
+# Usamos la imagen oficial de Apache HTTP Server (httpd)
+FROM httpd:latest
+
+# Copiamos todos los archivos .conf (vhosts) desde la carpeta local vhosts/
+# a la carpeta de configuración extra de Apache dentro del contenedor
+COPY vhosts/*.conf /usr/local/apache2/conf/extra/
+
+# Copiamos todos los sitios web (carpetas) desde la carpeta local sites/
+# al directorio raíz de los documentos de Apache dentro del contenedor
+COPY sites/ /usr/local/apache2/htdocs/
+
+# Añadimos una línea al final del archivo httpd.conf para que Apache
+# incluya todos los archivos .conf que estén en conf/extra/
+# Esto permite que se activen automáticamente los vhosts que copiamos antes
+RUN echo "IncludeOptional conf/extra/*.conf" >> /usr/local/apache2/conf/httpd.conf
