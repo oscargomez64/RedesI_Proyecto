@@ -10,3 +10,9 @@ services:
       - ./domain_blacklist.txt:/etc/squid/domain_blacklist.txt
       - /srv/docker/squid/cache:/var/spool/squid
     restart: always
+  apache:
+    image: httpd:latest
+    ports:
+    - '8080:80'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs
