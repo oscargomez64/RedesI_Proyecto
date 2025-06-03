@@ -1,0 +1,12 @@
+services:
+  squid-proxy:
+    image: ubuntu/squid
+    ports:
+      - "3128:3128"
+    environment:
+      - TZ=CST
+    volumes:
+      - ./squid.conf:/etc/squid/squid.conf
+      - ./domain_blacklist.txt:/etc/squid/domain_blacklist.txt
+      - /srv/docker/squid/cache:/var/spool/squid
+    restart: always
