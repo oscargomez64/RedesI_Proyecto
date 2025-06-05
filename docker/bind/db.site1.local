@@ -1,0 +1,11 @@
+$TTL 604800
+@   IN  SOA ns.site1.local. admin.site1.local. (
+        2         ; Serial
+        604800    ; Refresh
+        86400     ; Retry
+        2419200   ; Expire
+        604800 )  ; Negative Cache TTL
+;
+@       IN  NS      ns.site1.local.
+ns      IN  A       172.20.0.10       ; IP del contenedor Apache
+@       IN  A       172.20.0.10
