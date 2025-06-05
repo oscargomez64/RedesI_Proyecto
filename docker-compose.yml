@@ -1,12 +1,24 @@
+version: '3.8'
+
 services:
   squid-proxy:
     image: ubuntu/squid
+    container_name: squid
     ports:
       - "3128:3128"
-    environment:
-      - TZ=CST
     volumes:
       - ./squid.conf:/etc/squid/squid.conf
       - ./domain_blacklist.txt:/etc/squid/domain_blacklist.txt
       - /srv/docker/squid/cache:/var/spool/squid
     restart: always
+
+  apache:
+    build:
+      context: ./docker
+    container_name: apache
+    ports:
+      - "8080:80"
+    volumes:
+      - ./docker/web/sites:/usr/local/apache2/htdocs
+      - ./docker/vhosts:/usr/local/apache2/conf/extra
+
