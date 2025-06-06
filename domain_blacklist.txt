@@ -1,5 +1,5 @@
 chatgpt.com
 x.com
-facebook.com
+.facebook.com
 reddit.com
 .discord.com
