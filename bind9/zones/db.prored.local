@@ -1,0 +1,16 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@		IN		SOA		prored.local.	admin.prored.local. (
+			      3		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+@		IN		NS		prored.local.
+@		IN		A		172.24.0.3
+sitio1	IN		A		172.24.0.4
+sitio2	IN		A		172.24.0.4
+sitio3	IN		A		172.24.0.4

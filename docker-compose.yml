@@ -5,20 +5,26 @@ services:
     ports:
       - "3128:3128"
     volumes:
-      - ./squid.conf:/etc/squid/squid.conf
-      - ./domain_blacklist.txt:/etc/squid/domain_blacklist.txt
+      - ./squid-cache/squid.conf:/etc/squid/squid.conf
+      - ./squid-cache/domain_blacklist.txt:/etc/squid/domain_blacklist.txt
+      - ./squid-cache/keyword_blacklist.txt:/etc/squid/keyword_blacklist.txt
       - /srv/docker/squid/cache:/var/spool/squid
+    networks:
+      prored:
+        ipv4_address: 172.24.0.2
     restart: always
 
   apache:
-    build:
-      context: ./docker
+    image: ubuntu/apache2
     container_name: apache
     ports:
       - "8080:80"
     volumes:
-      - ./docker/WEB/sites:/usr/local/apache2/htdocs
-      - ./docker/WEB/vhosts:/usr/local/apache2/conf/extra
+      - ./apache2/sites:/var/www
+      - ./apache2/sites-available:/etc/apache2/sites-available
+    networks:
+      prored:
+        ipv4_address: 172.24.0.4
 
   bind:
     image: internetsystemsconsortium/bind9:9.18
@@ -27,5 +33,16 @@ services:
       - "53:53/udp"
       - "53:53/tcp"
     volumes:
-      - ./docker/bind:/etc/bind
+      - ./bind9/named.conf.options:/etc/bind/named.conf.options
+      - ./bind9/named.conf.local:/etc/bind/named.conf.local
+      - ./bind9/zones/db.prored.local:/etc/bind/zones/db.prored.local
+      - ./bind9/zones/db.172.24:/etc/bind/zones/db.172.24
+    networks:
+      prored:
+        ipv4_address: 172.24.0.3
     restart: always
+
+networks:
+  prored:
+    external: true
+    name: prored
