@@ -15,13 +15,9 @@ services:
     build:
       context: ./apache2
       dockerfile: Dockerfile
-    image: ubuntu/apache2
     container_name: apache
     ports:
       - "80:80"
-    volumes:
-      - ./apache2/sites:/var/www
-      - ./apache2/sites-available:/etc/apache2/sites-available
 
   bind:
     image: internetsystemsconsortium/bind9:9.18

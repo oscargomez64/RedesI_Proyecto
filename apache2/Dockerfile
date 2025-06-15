@@ -13,4 +13,8 @@ EXPOSE 80
 
 # Habilitamos los sitios web para que estén en sites-available/
 # y reiniciamos el servicio
-CMD a2ensite sitio1.prored.test.conf && a2ensite sitio2.prored.test.conf && a2ensite sitio3.prored.test.conf && a2dissite 000-default.conf
+RUN a2ensite sitio1.prored.test.conf
+RUN a2ensite sitio2.prored.test.conf
+RUN a2ensite sitio3.prored.test.conf
+RUN a2dissite 000-default.conf
+CMD ["apachectl", "-D", "FOREGROUND"]
