@@ -5,12 +5,7 @@
 // Consider adding the 1918 zones here, if they are not used in your
 // organization
 //include "/etc/bind/zones.rfc1918";
-zone "prored.local {
+zone "prored.test" {
     type master;
-    file "/etc/bind/zones/db.prored.local"
-}
-
-zone "24.172.in-addr.arpa" {
-    type master;
-    file "/etc/bind/zones/db.172.24";
+    file "/etc/bind/zones/db.prored.test";
 }
