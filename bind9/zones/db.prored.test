@@ -11,7 +11,7 @@ $TTL	604800
 ;
 @		IN		NS		ns1.prored.test.
 
-ns1		IN		A		192.168.100.2
-sitio1		IN		A		192.168.100.4
-sitio2		IN		A		192.168.100.4
-sitio3		IN		A		192.168.100.4
+ns1			IN		A		172.24.0.4
+sitio1		IN		A		172.24.0.4
+sitio2		IN		A		172.24.0.4
+sitio3		IN		A		172.24.0.4

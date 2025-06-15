@@ -4,7 +4,7 @@ services:
     container_name: squid
     networks:
       prored_test:
-        ipv4_address: 192.168.100.3
+        ipv4_address: 172.24.0.3
     ports:
       - "3128:3128"
     volumes:
@@ -21,16 +21,16 @@ services:
     container_name: apache
     networks:
       prored_test:
-        ipv4_address: 192.168.100.4
+        ipv4_address: 172.24.0.4
     ports:
       - "80:80"
 
   bind:
-    image: ubuntu/bind9
+    image: ubuntu/bind9:9.18-22.04_beta
     container_name: bind
     networks:
       prored_test:
-        ipv4_address: 192.168.100.2
+        ipv4_address: 172.24.0.2
     ports:
       - "53:53/udp"
       - "53:53/tcp"
