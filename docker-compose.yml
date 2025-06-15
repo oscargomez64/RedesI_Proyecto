@@ -27,8 +27,8 @@ services:
     image: internetsystemsconsortium/bind9:9.18
     container_name: bind
     ports:
-      - "53:53/udp"
-      - "53:53/tcp"
+      - "5335:53/udp"
+      - "5335:53/tcp"
     volumes:
       - ./bind9/named.conf.options:/etc/bind/named.conf.options
       - ./bind9/named.conf.local:/etc/bind/named.conf.local
