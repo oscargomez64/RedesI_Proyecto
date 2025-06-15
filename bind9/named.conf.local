@@ -8,4 +8,4 @@
 zone "prored.test" {
     type master;
     file "/etc/bind/zones/db.prored.test";
-}
+};

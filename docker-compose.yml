@@ -2,6 +2,9 @@ services:
   squid-proxy:
     image: ubuntu/squid
     container_name: squid
+    networks:
+      prored_test:
+        ipv4_address: 192.168.100.3
     ports:
       - "3128:3128"
     volumes:
@@ -16,17 +19,28 @@ services:
       context: ./apache2
       dockerfile: Dockerfile
     container_name: apache
+    networks:
+      prored_test:
+        ipv4_address: 192.168.100.4
     ports:
       - "80:80"
 
   bind:
-    image: internetsystemsconsortium/bind9:9.18
+    image: ubuntu/bind9
     container_name: bind
+    networks:
+      prored_test:
+        ipv4_address: 192.168.100.2
     ports:
-      - "5335:53/udp"
-      - "5335:53/tcp"
+      - "53:53/udp"
+      - "53:53/tcp"
     volumes:
       - ./bind9/named.conf.options:/etc/bind/named.conf.options
       - ./bind9/named.conf.local:/etc/bind/named.conf.local
       - ./bind9/zones/db.prored.test:/etc/bind/zones/db.prored.test
     restart: always
+
+networks:
+  prored_test:
+    external: true
+    name: prored_test

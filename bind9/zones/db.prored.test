@@ -3,15 +3,15 @@
 ;
 $TTL	604800
 @		IN		SOA		ns1.prored.test.	admin.prored.test. (
-			      3		; Serial
-			 604800		; Refresh
-			  86400		; Retry
-			2419200		; Expire
-			 604800 )	; Negative Cache TTL
+			      	3		; Serial
+			 	604800		; Refresh
+			  	86400		; Retry
+				2419200		; Expire
+			 	604800 )	; Negative Cache TTL
 ;
 @		IN		NS		ns1.prored.test.
 
-ns1		IN		A		127.0.0.1
-sitio1	IN		A		127.0.0.1
-sitio2	IN		A		127.0.0.1
-sitio3	IN		A		127.0.0.1
+ns1		IN		A		192.168.100.2
+sitio1		IN		A		192.168.100.4
+sitio2		IN		A		192.168.100.4
+sitio3		IN		A		192.168.100.4
