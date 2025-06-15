@@ -28,5 +28,5 @@ services:
     volumes:
       - ./bind9/named.conf.options:/etc/bind/named.conf.options
       - ./bind9/named.conf.local:/etc/bind/named.conf.local
-      - ./bind9/zones/db.prored.test:/etc/bind/zones/db.prored.local
+      - ./bind9/zones/db.prored.test:/etc/bind/zones/db.prored.test
     restart: always
