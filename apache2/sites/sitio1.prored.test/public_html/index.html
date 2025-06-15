@@ -1,11 +1,192 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Bienvenido a Site1</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>✨ Multiverso Canino con Pasas ✨</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: radial-gradient(circle, #ffe29f, #ffa99f, #ff719a);
+      animation: backgroundShift 20s infinite linear;
+    }
+
+    @keyframes backgroundShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 1000px 1000px; }
+    }
+
+    header {
+      background: linear-gradient(to right, #6a00f4, #ff6ec7);
+      color: #fff;
+      text-align: center;
+      padding: 4rem 1rem;
+      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
+      position: relative;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 3.5rem;
+      margin: 0;
+      animation: floaty 3s infinite ease-in-out;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    main {
+      padding: 3rem;
+      max-width: 1000px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      transform: rotate(-2deg);
+      box-shadow: 0 0 40px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 5;
+    }
+
+    main p {
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: #3f3f3f;
+      margin-bottom: 2rem;
+      transform: rotate(1deg);
+    }
+
+    .perro {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .perro-item {
+      width: 220px;
+      border: 4px dashed #ff6ec7;
+      border-radius: 15px;
+      padding: 1rem;
+      background: #fff6f9;
+      text-align: center;
+      transition: transform 0.3s ease;
+      box-shadow: 0 0 15px rgba(255,110,199,0.5);
+    }
+
+    .perro-item:hover {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .perro-item img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .perro-item h3 {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      color: #6a00f4;
+    }
+
+    .portal {
+      position: fixed;
+      top: 10vh;
+      right: -150px;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #00f, #0ff);
+      animation: spinPortal 6s linear infinite;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    @keyframes spinPortal {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    footer {
+      margin-top: 5rem;
+      padding: 2rem;
+      text-align: center;
+      font-size: 1rem;
+      color: #fff;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      clip-path: polygon(0 20%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    .glitch {
+      position: relative;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      color: red;
+      animation: glitch 1s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      color: blue;
+      animation: glitch 1s infinite linear alternate;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(1px, -1px); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(3px, 2px); }
+      60% { transform: translate(-1px, -2px); }
+      80% { transform: translate(2px, 1px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
 </head>
 <body>
-    <h1>Este es el sitio 1</h1>
-    <p>Contenido personalizado para site1.local</p>
+  <div class="portal"></div>
+  <header>
+    <h1 class="glitch" data-text="✨ PERROS CON PASAS DEL MULTIVERSO ✨">
+      ✨ PERROS CON PASAS DEL MULTIVERSO ✨
+    </h1>
+  </header>
+
+  <main>
+    <p>🌌 En un universo paralelo, los perros no solo ladran... ¡tamborilean con uvas pasificadas en sus patas! Bienvenido al portal donde los snacks, las dimensiones y los caninos convergen.</p>
+    <p>🦖 Elige tu variante favorita: ¿El Chihuahua Cuántico? ¿El Gran Danés Dimensional? ¡Cada uno con su toque de pasas! 🍇</p>
+
+    <div class="perro">
+      <div class="perro-item">
+        <img src="https://place-puppy.com/220x220" alt="Chihuahua Cuántico">
+        <h3>Chihuahua Cuántico</h3>
+      </div>
+      <div class="perro-item">
+        <img src="https://place-puppy.com/221x221" alt="Bulldog con Pasas">
+        <h3>Bulldog con Pasas</h3>
+      </div>
+      <div class="perro-item">
+        <img src="https://place-puppy.com/222x222" alt="Corgi Multiversal">
+        <h3>Corgi Multiversal</h3>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 - Dimensiones Caninas Asociadas. No se garantizan viajes en el tiempo ni resurrecciones de pasas mordidas.
+  </footer>
 </body>
 </html>
