@@ -1,17 +1,16 @@
 services:
-  squid-proxy:
-    image: ubuntu/squid
+  squid-cache:
+    build:
+      context: ./squid-cache
+      dockerfile: Dockerfile
     container_name: squid
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.3
     ports:
       - "3128:3128"
-    volumes:
-      - ./squid-cache/squid.conf:/etc/squid/squid.conf
-      - ./squid-cache/domain_blacklist.txt:/etc/squid/domain_blacklist.txt
-      - ./squid-cache/keyword_blacklist.txt:/etc/squid/keyword_blacklist.txt
-      - /srv/docker/squid/cache:/var/spool/squid
     restart: always
 
   apache:
@@ -19,25 +18,28 @@ services:
       context: ./apache2
       dockerfile: Dockerfile
     container_name: apache
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.4
     ports:
       - "80:80"
+    restart: always
 
   bind:
-    image: ubuntu/bind9:9.18-22.04_beta
+    build:
+      context: ./bind9
+      dockerfile: Dockerfile
     container_name: bind
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.2
     ports:
       - "53:53/udp"
       - "53:53/tcp"
-    volumes:
-      - ./bind9/named.conf.options:/etc/bind/named.conf.options
-      - ./bind9/named.conf.local:/etc/bind/named.conf.local
-      - ./bind9/zones/db.prored.test:/etc/bind/zones/db.prored.test
     restart: always
 
 networks:

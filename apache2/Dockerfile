@@ -11,6 +11,9 @@ COPY sites/ /var/www/
 
 EXPOSE 80
 
+# Instalamos el componenete iptables
+RUN apt update && apt -y install iptables
+
 # Habilitamos los sitios web para que estén en sites-available/
 # y reiniciamos el servicio
 RUN a2ensite sitio1.prored.test.conf
