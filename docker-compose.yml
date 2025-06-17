@@ -4,6 +4,8 @@ services:
       context: ./squid-cache
       dockerfile: Dockerfile
     container_name: squid
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.3
@@ -17,6 +19,8 @@ services:
       context: ./apache2
       dockerfile: Dockerfile
     container_name: apache
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.4
@@ -29,6 +33,8 @@ services:
       context: ./bind9
       dockerfile: Dockerfile
     container_name: bind
+    cap_add:
+      - NET_ADMIN
     networks:
       prored_test:
         ipv4_address: 172.24.0.2
