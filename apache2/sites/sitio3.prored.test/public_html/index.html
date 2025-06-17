@@ -1,65 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perros con Pasas</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to right, #f8f9fa, #e3f2fd);
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
+  <meta charset="UTF-8">
+  <title>Inicio de sesión</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        header {
-            background-color: #673ab7;
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-        }
+    body {
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at center, #300030 0%, #000000 100%);
+      font-family: 'Ubuntu', sans-serif;
+      color: #eee;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 1s ease;
+    }
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
+    .login-box {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 50px;
+      border-radius: 15px;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+    }
 
-        main {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+    .login-box:hover {
+      transform: scale(1.02);
+    }
 
-        p {
-            font-size: 1.2rem;
-            line-height: 1.6;
-        }
+    .login-box h2 {
+      margin-bottom: 25px;
+      font-weight: normal;
+      font-size: 24px;
+      color: #fff;
+      transition: color 0.3s ease;
+    }
 
-        footer {
-            text-align: center;
-            padding: 1rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
-            color: #777;
-        }
-    </style>
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background: #1e1e1e;
+      color: #f2f2f2;
+      font-size: 16px;
+      transition: border 0.3s, background 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #dd4814;
+      background: #292929;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #dd4814;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #c74312;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      min-height: 24px;
+    }
+
+    .message.visible {
+      opacity: 1;
+    }
+
+    .success {
+      color: #00ff88;
+    }
+
+    .error {
+      color: #ff4444;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>🐶 Venta de Perros con Pasas</h1>
-    </header>
+  <div class="login-box">
+    <h2>Iniciar sesión en Ubuntu sitio 3</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Entrar</button>
+    <div class="message" id="message"></div>
+  </div>
 
-    <main>
-        <p>Bienvenido a nuestro peculiar rincón en la web. Aquí, los perros no ladran... ¡se disfrutan! Si estás buscando algo único, dulce y con mucha personalidad, estás en el lugar correcto.</p>
-        <p>Explora nuestro catálogo de adorables "perros con pasas" y encuentra tu favorito. 😉</p>
-    </main>
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
 
-    <footer>
-        &copy; 2025 Perros con Pasas. Todos los derechos reservados.
-    </footer>
+      if (user === "m1000" && pass === "moritz") {
+        message.className = "message success visible";
+        message.textContent = "✅ Cuenta de Bitcoin abierta correctamente.";
+      } else {
+        message.className = "message error visible";
+        message.textContent = "❌ Contraseña incorrecta.";
+      }
+    }
+  </script>
 </body>
 </html>

@@ -2,191 +2,128 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>✨ Multiverso Canino con Pasas ✨</title>
+  <title>Inicio de sesión</title>
   <style>
-    html, body {
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
       margin: 0;
       padding: 0;
-      overflow-x: hidden;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: radial-gradient(circle, #ffe29f, #ffa99f, #ff719a);
-      animation: backgroundShift 20s infinite linear;
-    }
-
-    @keyframes backgroundShift {
-      0% { background-position: 0 0; }
-      100% { background-position: 1000px 1000px; }
-    }
-
-    header {
-      background: linear-gradient(to right, #6a00f4, #ff6ec7);
-      color: #fff;
-      text-align: center;
-      padding: 4rem 1rem;
-      clip-path: polygon(0 0, 100% 0, 100% 80%, 0 100%);
-      position: relative;
-      z-index: 10;
-    }
-
-    header h1 {
-      font-size: 3.5rem;
-      margin: 0;
-      animation: floaty 3s infinite ease-in-out;
-    }
-
-    @keyframes floaty {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    main {
-      padding: 3rem;
-      max-width: 1000px;
-      margin: auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      transform: rotate(-2deg);
-      box-shadow: 0 0 40px rgba(0,0,0,0.3);
-      position: relative;
-      z-index: 5;
-    }
-
-    main p {
-      font-size: 1.4rem;
-      line-height: 1.8;
-      color: #3f3f3f;
-      margin-bottom: 2rem;
-      transform: rotate(1deg);
-    }
-
-    .perro {
+      background: radial-gradient(circle at center, #300030 0%, #000000 100%);
+      font-family: 'Ubuntu', sans-serif;
+      color: #eee;
+      height: 100vh;
       display: flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
+      transition: background 1s ease;
     }
 
-    .perro-item {
-      width: 220px;
-      border: 4px dashed #ff6ec7;
+    .login-box {
+      background: rgba(0, 0, 0, 0.65);
+      padding: 50px;
       border-radius: 15px;
-      padding: 1rem;
-      background: #fff6f9;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
       text-align: center;
-      transition: transform 0.3s ease;
-      box-shadow: 0 0 15px rgba(255,110,199,0.5);
+      transition: all 0.3s ease-in-out;
     }
 
-    .perro-item:hover {
-      transform: scale(1.1) rotate(5deg);
+    .login-box:hover {
+      transform: scale(1.02);
     }
 
-    .perro-item img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .perro-item h3 {
-      margin: 0.5rem 0 0;
-      font-size: 1.2rem;
-      color: #6a00f4;
-    }
-
-    .portal {
-      position: fixed;
-      top: 10vh;
-      right: -150px;
-      width: 300px;
-      height: 300px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #00f, #0ff);
-      animation: spinPortal 6s linear infinite;
-      opacity: 0.3;
-      z-index: 1;
-    }
-
-    @keyframes spinPortal {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    footer {
-      margin-top: 5rem;
-      padding: 2rem;
-      text-align: center;
-      font-size: 1rem;
+    .login-box h2 {
+      margin-bottom: 25px;
+      font-weight: normal;
+      font-size: 24px;
       color: #fff;
-      background: linear-gradient(to right, #00c6ff, #0072ff);
-      clip-path: polygon(0 20%, 100% 0%, 100% 100%, 0% 100%);
+      transition: color 0.3s ease;
     }
 
-    .glitch {
-      position: relative;
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 12px 0;
+      border: 1px solid #444;
+      border-radius: 6px;
+      background: #1e1e1e;
+      color: #f2f2f2;
+      font-size: 16px;
+      transition: border 0.3s, background 0.3s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #dd4814;
+      background: #292929;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      background-color: #dd4814;
+      border: none;
       color: white;
-      font-size: 2rem;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      opacity: 0.8;
+    button:hover {
+      background-color: #c74312;
     }
 
-    .glitch::before {
-      color: red;
-      animation: glitch 1s infinite linear alternate-reverse;
+    .message {
+      margin-top: 20px;
+      font-size: 16px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      min-height: 24px;
     }
 
-    .glitch::after {
-      color: blue;
-      animation: glitch 1s infinite linear alternate;
+    .message.visible {
+      opacity: 1;
     }
 
-    @keyframes glitch {
-      0% { transform: translate(1px, -1px); }
-      20% { transform: translate(-3px, 3px); }
-      40% { transform: translate(3px, 2px); }
-      60% { transform: translate(-1px, -2px); }
-      80% { transform: translate(2px, 1px); }
-      100% { transform: translate(0, 0); }
+    .success {
+      color: #00ff88;
+    }
+
+    .error {
+      color: #ff4444;
     }
   </style>
 </head>
 <body>
-  <div class="portal"></div>
-  <header>
-    <h1 class="glitch" data-text="✨ PERROS CON PASAS DEL MULTIVERSO ✨">
-      ✨ PERROS CON PASAS DEL MULTIVERSO ✨
-    </h1>
-  </header>
+  <div class="login-box">
+    <h2>Iniciar sesión en Ubuntu sitio 1</h2>
+    <input type="text" id="username" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+    <button onclick="login()">Entrar</button>
+    <div class="message" id="message"></div>
+  </div>
 
-  <main>
-    <p>🌌 En un universo paralelo, los perros no solo ladran... ¡tamborilean con uvas pasificadas en sus patas! Bienvenido al portal donde los snacks, las dimensiones y los caninos convergen.</p>
-    <p>🦖 Elige tu variante favorita: ¿El Chihuahua Cuántico? ¿El Gran Danés Dimensional? ¡Cada uno con su toque de pasas! 🍇</p>
+  <script>
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const message = document.getElementById("message");
 
-    <div class="perro">
-      <div class="perro-item">
-        <img src="https://place-puppy.com/220x220" alt="Chihuahua Cuántico">
-        <h3>Chihuahua Cuántico</h3>
-      </div>
-      <div class="perro-item">
-        <img src="https://place-puppy.com/221x221" alt="Bulldog con Pasas">
-        <h3>Bulldog con Pasas</h3>
-      </div>
-      <div class="perro-item">
-        <img src="https://place-puppy.com/222x222" alt="Corgi Multiversal">
-        <h3>Corgi Multiversal</h3>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 - Dimensiones Caninas Asociadas. No se garantizan viajes en el tiempo ni resurrecciones de pasas mordidas.
-  </footer>
+      if (user === "m1000" && pass === "moritz") {
+        message.className = "message success visible";
+        message.textContent = "✅ Cuenta de Bitcoin abierta correctamente.";
+      } else {
+        message.className = "message error visible";
+        message.textContent = "❌ Contraseña incorrecta.";
+      }
+    }
+  </script>
 </body>
 </html>
