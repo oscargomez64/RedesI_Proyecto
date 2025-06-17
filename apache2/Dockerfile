@@ -11,8 +11,8 @@ COPY sites/ /var/www/
 
 EXPOSE 80
 
-# Instalamos el componenete iptables
-RUN apt update && apt -y install iptables
+# Instalamos el paquete que contiene la utilidad ping
+RUN apt update && apt -y install iputils-ping
 
 # Habilitamos los sitios web para que estén en sites-available/
 # y reiniciamos el servicio
